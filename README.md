@@ -21,13 +21,17 @@ Requirements
 Credits
 -------
 ==Project Manager==
+
 Peter Jacobson
 
 ==Lead Developer==
+
 Sam Platt
 
 ==Back End Developer, Script Supervisor and Artist==
+
 Liam Erickson
 
 ==Head of Research & GUI Guy==
+
 Ronin Ganoot
