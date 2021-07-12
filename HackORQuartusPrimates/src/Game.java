@@ -1,20 +1,7 @@
 //import statements
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.*;
-
+import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.ImageIcon;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.JComponent;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JFrame;
 
 public class Game {
 
@@ -23,21 +10,18 @@ public class Game {
     JPanel titleNamePanel, endGameButtonPanel, playGameButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel, picturePanel;
     JLabel titleNameLabel, hpLabel, hpLabelNumber, pictureLabel, mainTextArea;
     
-    Font titleFont = new Font("Times New Roman", Font.BOLD, 90);
-    Font titleButtonFont = new Font("Times New Roman", Font.PLAIN, 60);
-    Font promptFont = new Font("Calibri", Font.BOLD, 16); 
-    Font choiceFont = new Font("Calibri", Font.BOLD, 18);
-    Font hpFont = new Font("Calibri", Font.BOLD, 35);
-    Font otherButtonFont = new Font("Times New Roman", Font.PLAIN, 45);
+    Font titleFont = new Font("Times New Roman", Font.BOLD, 90), titleButtonFont = new Font("Times New Roman", Font.PLAIN, 60),
+    		promptFont = new Font("Calibri", Font.BOLD, 16), choiceFont = new Font("Calibri", Font.BOLD, 18),
+    		hpFont = new Font("Calibri", Font.BOLD, 35), otherButtonFont = new Font("Times New Roman", Font.PLAIN, 45);
     
     JButton endGameButton, playGameButton, choice1, choice2, choice3;
 
     //JTextArea mainTextArea;
     String position;
     int playerHp;
-    ImageIcon image1, image2;
-    ImageIcon tsaNormal, tsaMad, planeMarshall, planeOne, planeTwo, planeCrash, mirrorBuilding, inHotDogBuild,
-    hotDogBuild, gates, feetBandage, doorSlams, doorInHotDogBuild, backPack, afterPickUpBandage, twoBuilding;
+    ImageIcon image1, image2, tsaNormal, tsaMad, planeMarshall, planeOne, planeTwo, planeCrash, mirrorBuilding, inHotDogBuild,
+    	hotDogBuild, gates, feetBandage, doorSlams, doorInHotDogBuild, backPack, afterPickUpBandage, twoBuilding, happilyEverAfter,
+    	fetalPos, clownCooking, bleedingImage, winImage, deathGeneric, doorOutHotDogBuild;
 
     TitleScreenHandler tsHandler = new TitleScreenHandler();
     ExitHandler eHandler = new ExitHandler();
@@ -45,29 +29,41 @@ public class Game {
 
     public Game() {
 
+    	//"./Audio/test.wav"
+    	
         //setting the window of the game
         window = new JFrame();
-        window.setSize(720,720);       
+        window.setSize(720,720);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.getContentPane().setBackground(Color.black);
         window.setLayout(null);
         
+        
+        //Fullscreen Settings
+        //window.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+        //window.setUndecorated(false);
+        //window.setVisible(true);
+        
+        
         con = window.getContentPane();
 
-        //creates the title page panel
+        //title
         titleNamePanel = new JPanel();
+        //titleNamePanel.setBounds(0, 200, 1920, 200);
         titleNamePanel.setBounds(0, 200, 720, 200);
         titleNamePanel.setBackground(Color.black);
         titleNameLabel = new JLabel("Laughing Stock");
         titleNameLabel.setForeground(Color.white);
         titleNameLabel.setFont(titleFont);
+        
 
         //panel that holds the buttons in order to play the game
         playGameButtonPanel = new JPanel();
+        //playGameButtonPanel.setBounds(0, 400, 1920, 100);
         playGameButtonPanel.setBounds(250, 400, 180, 100);
         playGameButtonPanel.setBackground(Color.black);
 
-        //button that prompts user to play the game
+        //play button
         playGameButton = new JButton("PLAY");
         playGameButton.setBackground(Color.black);
         playGameButton.setForeground(Color.white);
@@ -76,8 +72,9 @@ public class Game {
         playGameButton.addActionListener(tsHandler);
         playGameButton.setFocusPainted(false);
         
-        //panel that holds the end game button
+        //panel that exit button
         endGameButtonPanel = new JPanel();
+        //endGameButtonPanel.setBounds(0, 500, 1920, 70);
         endGameButtonPanel.setBounds(285, 500, 120, 70);
         endGameButtonPanel.setBackground(Color.black);
         
@@ -102,6 +99,7 @@ public class Game {
         window.setVisible(true);
     }
     
+    /*
     //method to set up typing
     public void createrTextEdit() {
     	// Make start button come here
@@ -113,7 +111,10 @@ public class Game {
     	
     	// Have continue button move to createGameScreen
     }
-
+	*/
+    
+    //Why would we need this ^^^^
+    
     //function that creates the game screen 
     public void createGameScreen() {
 
@@ -125,12 +126,13 @@ public class Game {
         //creates a text area panel that shows the message to the user
         mainTextPanel = new JPanel();
         mainTextPanel.setBounds(10, 499, 678, 100);
+        //mainTextPanel.setBounds(0, 840, 1920, 100);
         mainTextPanel.setBackground(Color.white);
         con.add(mainTextPanel);
 
         //sets the text area
         mainTextArea = new JLabel();
-        mainTextArea.setBounds(2, 500, 680, 100);
+        mainTextArea.setBounds(2, 900, 680, 100);
         mainTextArea.setBackground(Color.white);
         mainTextArea.setForeground(Color.black);
         mainTextArea.setFont(promptFont);
@@ -140,6 +142,7 @@ public class Game {
         //choice button panel that shows the choices for the user
         choiceButtonPanel = new JPanel();
         choiceButtonPanel.setBounds(9, 600, 680, 70);
+        //choiceButtonPanel.setBounds(0, 940, 1920, 70);
         choiceButtonPanel.setBackground(Color.black);
         choiceButtonPanel.setLayout(new GridLayout(1,3));
         con.add(choiceButtonPanel);
@@ -232,23 +235,23 @@ public class Game {
         
     //where it shows the hp bar with a unspecified hp
     public void playerSetup () {
+    	Main.jimbo.setHealth(10);
         playerHp = Main.health;
         hpLabelNumber.setText("" + playerHp);
         panelInit();
     }
 
+    
     //choices to show the first scenario
     public void panelInit() {
     	
-    	 //these picture panels is what calls the images from the folder
-    	playerHp = Main.health;
-        hpLabelNumber.setText("" + playerHp);
+    	//these picture panels is what calls the images from the folder
         picturePanel = new JPanel();
         picturePanel.setBounds(110, -5, 500, 500);
         picturePanel.setBackground(Color.black);
         con.add(picturePanel);
         pictureLabel = new JLabel();
-        tsaNormal = new ImageIcon(".//Images//TSA.jpg.jpeg");
+        tsaNormal = new ImageIcon(".//Images//TSA.jpg");
         pictureLabel.setIcon(tsaNormal);
         picturePanel.add(pictureLabel);
 		
@@ -312,6 +315,7 @@ public class Game {
     }
     
     public void panelC() {
+    	winning();
         position = "panelC";
         mainTextArea.setText(Main.c.prompt);
 
@@ -422,6 +426,9 @@ public class Game {
         picturePanel.add(pictureLabel);
         position = "panelH";
         mainTextArea.setText(Main.h.prompt);
+    	Main.injury(10, 11);
+    	playerHp = Main.jimbo.getHealth();
+    	hpLabelNumber.setText("" + playerHp);
 
         choice1.setText("");
         choice2.setText("Restart");
@@ -472,6 +479,13 @@ public class Game {
     }
     
     public void panelK() {
+    	  picturePanel = new JPanel();
+          picturePanel.setBounds(110, -5, 500, 500);
+          con.add(picturePanel);
+          pictureLabel = new JLabel();
+          bleedingImage = new ImageIcon(".//Images//BleedingOut.jpg");
+          pictureLabel.setIcon(bleedingImage);
+          picturePanel.add(pictureLabel);
         position = "panelK";
         mainTextArea.setText(Main.k.prompt);
 
@@ -583,6 +597,7 @@ public class Game {
     
     // TODO: add choices
     public void panelO() {
+    	deathGeneric();
         position = "panelO";
         mainTextArea.setText(Main.o.prompt);
 
@@ -615,8 +630,19 @@ public class Game {
     }
     
     public void panelQ() {
+    	picturePanel = new JPanel();
+        picturePanel.setBounds(110, -5, 500, 500);
+        con.add(picturePanel);
+        pictureLabel = new JLabel();
+        fetalPos = new ImageIcon(".//Images//FetalPos.jpg");
+        pictureLabel.setIcon(fetalPos);
+        picturePanel.add(pictureLabel);
+
         position = "panelQ";
         mainTextArea.setText(Main.q.prompt);
+    	Main.jimbo.setHealth(0);
+    	playerHp = Main.jimbo.getHealth();
+    	hpLabelNumber.setText("" + playerHp);
 
         choice1.setText("");
         choice2.setText("Restart");
@@ -631,8 +657,8 @@ public class Game {
         picturePanel.setBounds(110, -5, 500, 500);
         con.add(picturePanel);
         pictureLabel = new JLabel();
-        mirrorBuilding = new ImageIcon(".//Images//MirrorBuilding.jpg");
-        pictureLabel.setIcon(mirrorBuilding);
+        doorSlams = new ImageIcon(".//Images//DoorSlams.jpg");
+        pictureLabel.setIcon(doorSlams);
         picturePanel.add(pictureLabel);
         
         position = "panelR";
@@ -691,8 +717,8 @@ public class Game {
         picturePanel.setBounds(110, -5, 500, 500);
         con.add(picturePanel);
         pictureLabel = new JLabel();
-        twoBuilding = new ImageIcon(".//Images//2Building.jpg");
-        pictureLabel.setIcon(twoBuilding);
+        mirrorBuilding = new ImageIcon(".//Images//MirrorBuilding.jpg");
+        pictureLabel.setIcon(mirrorBuilding);
         picturePanel.add(pictureLabel);
 
         position = "panelU";
@@ -731,14 +757,14 @@ public class Game {
         picturePanel.setBounds(110, -5, 500, 500);
         con.add(picturePanel);
         pictureLabel = new JLabel();
-        doorInHotDogBuild = new ImageIcon(".//Images//DoorInHotDogBuild.jpg");
-        pictureLabel.setIcon(doorInHotDogBuild);
+        hotDogBuild = new ImageIcon(".//Images//DoorInHotDogBuild.jpg");
+        pictureLabel.setIcon(hotDogBuild);
         picturePanel.add(pictureLabel);
 
         position = "panelW";
         mainTextArea.setText(Main.w.prompt);
 
-        choice1.setText("Push the door");
+        choice1.setText("Pull the door");
         choice2.setText("");
         choice3.setText("<html><center>Walk out the <br> way you came</center></html>");
         choice1.setVisible(true);
@@ -767,6 +793,7 @@ public class Game {
     }
     
     public void panelY() {
+    	deathGeneric();
         position = "panelY";
         mainTextArea.setText(Main.y.prompt);
 
@@ -779,6 +806,7 @@ public class Game {
     }
     
     public void panelZ() {
+    	deathGeneric();
         position = "panelZ";
         mainTextArea.setText(Main.z.prompt);
 
@@ -795,8 +823,8 @@ public class Game {
         picturePanel.setBounds(110, -5, 500, 500);
         con.add(picturePanel);
         pictureLabel = new JLabel();
-        doorInHotDogBuild = new ImageIcon(".//Images//DoorInHotDogBuild.jpg");
-        pictureLabel.setIcon(doorInHotDogBuild);
+        doorOutHotDogBuild = new ImageIcon(".//Images//HotDogOut.jpg");
+        pictureLabel.setIcon(doorOutHotDogBuild);
         picturePanel.add(pictureLabel);
 
         position = "panelAA";
@@ -831,7 +859,14 @@ public class Game {
     }
     
     public void panelAC() {
-        //clown cooking image missing? possibly
+    	picturePanel = new JPanel();
+        picturePanel.setBounds(110, -5, 500, 500);
+        con.add(picturePanel);
+        pictureLabel = new JLabel();
+        clownCooking = new ImageIcon(".//Images//ClownCooking.jpg");
+        pictureLabel.setIcon(clownCooking);
+        picturePanel.add(pictureLabel);
+         
         position = "panelAC";
         mainTextArea.setText(Main.ac.prompt);
 
@@ -864,6 +899,7 @@ public class Game {
     }
     
     public void panelAE() {
+    	deathGeneric();
         position = "panelAE";
         mainTextArea.setText(Main.ae.prompt);
 
@@ -876,6 +912,13 @@ public class Game {
     }
     
     public void panelAF() {
+    	picturePanel.setBounds(110, -5, 500, 500);
+        con.add(picturePanel);
+        pictureLabel = new JLabel();
+        clownCooking = new ImageIcon(".//Images//ClownCooking.jpg");
+        pictureLabel.setIcon(clownCooking);
+        picturePanel.add(pictureLabel);
+        
         position = "panelAF";
         mainTextArea.setText(Main.af.prompt);
 
@@ -891,6 +934,14 @@ public class Game {
     //supposed to transition to a death screen when player chooses to bad routes but still doesn't work yet
     
     public void deathGeneric() {
+        picturePanel = new JPanel();
+        picturePanel.setBounds(110, -5, 500, 500);
+        con.add(picturePanel);
+        pictureLabel = new JLabel();
+        deathGeneric = new ImageIcon(".//Images//YouDiedGeneric.jpg");
+        pictureLabel.setIcon(deathGeneric);
+        picturePanel.add(pictureLabel);
+
     	position = "deathG";
     	mainTextArea.setText(Main.go.prompt);
     	Main.injury(10, 11);
@@ -918,9 +969,17 @@ public class Game {
     }
     
     public void deathShrapnel() {
+    	 picturePanel = new JPanel();
+         picturePanel.setBounds(110, -5, 500, 500);
+         con.add(picturePanel);
+         pictureLabel = new JLabel();
+         deathGeneric = new ImageIcon(".//Images//YouDiedGeneric.jpg");
+         pictureLabel.setIcon(deathGeneric);
+         picturePanel.add(pictureLabel);
+    	
     	position = "deathS";
     	mainTextArea.setText(Main.ai.prompt);
-    	Main.injury(10, 11);
+    	Main.jimbo.setHealth(0);
     	playerHp = Main.jimbo.getHealth();
     	hpLabelNumber.setText("" + playerHp);
     	//GAME OVER, SHRAPNEL IN YOUR LEG WAS TOO MUCH
@@ -935,6 +994,14 @@ public class Game {
     
     //supposed to transition to a winning screen when player chooses great routes
     public void winning() {
+    	picturePanel = new JPanel();
+        picturePanel.setBounds(110, -5, 500, 500);
+        con.add(picturePanel);
+        pictureLabel = new JLabel();
+        winImage = new ImageIcon(".//Images//YouWin.jpg");
+        pictureLabel.setIcon(winImage);
+        picturePanel.add(pictureLabel);
+    	
     	position = "winning";
     	mainTextArea.setText(Main.win.prompt);
     	
@@ -947,11 +1014,19 @@ public class Game {
     }
     
     public void winningC() {
+        picturePanel = new JPanel();
+        picturePanel.setBounds(110, -5, 500, 500);
+        con.add(picturePanel);
+        pictureLabel = new JLabel();
+        happilyEverAfter = new ImageIcon(".//Images//HappilyEverAfter.jpg");
+        pictureLabel.setIcon(happilyEverAfter);
+        picturePanel.add(pictureLabel);
+    	
     	position = "winningC";
     	mainTextArea.setText(Main.winC.prompt);
     	
 		choice1.setText("");
-		choice2.setText("Play again?");
+		choice2.setText("Continue");
 		choice3.setText("");
 		choice1.setVisible(true);
 		choice2.setVisible(true);
@@ -1003,7 +1078,7 @@ public class Game {
             	deathGeneric();break;
             case "panelC":
             	switch(buttonPressed) {
-    			case "c2": panelInit(); break;
+    			case "c2": playerSetup(); break;
     			}
     			break;
             
@@ -1037,7 +1112,7 @@ public class Game {
             	break;
             case "panelH":
             	switch(buttonPressed) {
-        		case "c2": panelInit(); break;
+        		case "c2": playerSetup(); break;
             	}
             	break;
             case "panelI":
@@ -1083,7 +1158,7 @@ public class Game {
             	break;
             case "panelO":
             	switch(buttonPressed) {
-    			case "c2": panelInit(); break;
+    			case "c2": playerSetup(); break;
     			}
     			break;
             	
@@ -1096,7 +1171,7 @@ public class Game {
             	break;
             case "panelQ":
             	switch(buttonPressed) {
-    			case "c2": panelInit(); break;
+    			case "c2": playerSetup(); break;
     			}
     			break;
             	
@@ -1148,7 +1223,7 @@ public class Game {
     			break;
     		case "panelY": 
             	switch(buttonPressed) {
-    			case "c2": panelInit(); break;
+    			case "c2": playerSetup(); break;
     			}
     			break;
     		case "panelZ":
@@ -1190,27 +1265,27 @@ public class Game {
     			break;
             case "deathG":
             	switch(buttonPressed) {
-    			case "c2": panelInit(); break;
+    			case "c2": playerSetup(); break;
     			}
     			break;
             case "deathS":
             	switch(buttonPressed) {
-    			case "c2": panelInit(); break;
+    			case "c2": playerSetup(); break;
     			}
     			break;
             case "deathC":
             	switch(buttonPressed) {
-    			case "c2": panelInit(); break;
+    			case "c2": playerSetup(); break;
     			}
     			break;
             case "winning":
             	switch(buttonPressed) {
-    			case "c2": panelInit(); break;
+    			case "c2": playerSetup(); break;
     			}
     			break;
             case "winningC":
             	switch(buttonPressed) {
-    			case "c2": panelInit(); break;
+    			case "c2": winning(); break;
     			}
     			break;
             }
