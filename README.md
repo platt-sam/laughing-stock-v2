@@ -1,7 +1,7 @@
-# GAME NAME
+# LAUGHING STOCK
 Quartus Primates HackOR 2021 Project Repo
 
-Afrter 48 hours of programming, drawing, laughing, crying, yelling, taco bell, room clearing farts, and some good ole wifi outages coal has turned into a ight jem. Join us on an adventure of a lifetime which will likely be short in this humerous horror choose your own adventure game. Hand drawn art and a "riveting" story line really make you want to continue, but it seems that you just can never get it correct. 
+Afrter 48 hours of programming, drawing, laughing, crying, yelling, Taco Bell, room clearing farts, and some good ole wifi outages coal has turned into an aight gem. Join us on an adventure of a lifetime which will likely be short in this humerous horror choose your own adventure game. Hand drawn art and a "riveting" story line really make you want to continue, but it seems that you just can never get it correct. 
 
 How to Play
 -----------
@@ -30,5 +30,5 @@ Sam Platt
 ==Script Supervisor & Artist==
 Liam Erickson
 
-==Head of Search & GUI Guy==
+==Head of Research & GUI Guy==
 Ronin Ganoot
