@@ -3,6 +3,12 @@ Quartus Primates HackOR 2021 Project Repo
 
 After 48 hours of programming, drawing, laughing, crying and Wi-Fi outages, our vision to create a game became a reality. Join us on an adventure of a lifetime, likely to cause pain and make you laugh in this choose-your-own-adventure style game. Hand drawn art and a riveting story line will keep you hooked, even when you fail over and over again. 
 
+
+Awards
+------
+#1 Winning game overall for HackOR Hackathon - Award presented by Joy Liu, founder and director of HackOR 2021 
+
+
 How to Play
 -----------
   1. Download the "Runnable" file to your desktop or other.
@@ -20,21 +26,10 @@ Requirements
 
 Credits
 -------
-==Project Manager==
+Peter Jacobson - Project Manager
 
-Peter Jacobson
+Sam Platt - Lead Developer
 
+Liam Erickson - Back End Developer, Script Supervisor and Artist
 
-==Lead Developer==
-
-Sam Platt
-
-
-==Back End Developer, Script Supervisor and Artist==
-
-Liam Erickson
-
-
-==Head of Research & GUI Guy==
-
-Ronin Ganoot
+Ronin Ganoot - Head of Research & GUI Guy
